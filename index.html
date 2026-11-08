@@ -389,7 +389,7 @@ aside.callout strong:first-child{color:hsl(var(--c))}
     <p class="sub">Controlix s'installe <strong>uniquement</strong> avec cet installeur : pas de dépôt à cloner, pas de compilation. Il contrôle la machine, installe Docker si besoin, télécharge les images, génère les secrets et le certificat, puis vous demande le nom d'utilisateur, l'e-mail et le mot de passe de l'administrateur.</p>
     <div class="install">
       <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>serveur Linux · root</span></div>
-<pre><code>curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo sh -s -- install --host 203.0.113.10</code></pre></div>
+<pre><code>curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo sh -s -- install --host 203.0.113.10</code></pre></div>
       <div class="callout-home" role="note"><strong>Remplacez <code>203.0.113.10</code> par l'adresse de VOTRE serveur</strong>, son IP ou son nom DNS, telle que vos navigateurs et vos agents la joindront. Le certificat HTTPS est émis pour cette adresse précise ; avec une autre, la connexion est refusée. Serveur dans le cloud : donnez son IP <em>publique</em>.</div>
       <div class="steps">
         <div><h4>Lancer la commande</h4><p>Sur un serveur Linux, avec l'adresse de ce serveur.</p></div>
@@ -602,7 +602,7 @@ aside.callout strong:first-child{color:hsl(var(--c))}
 <tr>
 <td><strong>Installeur</strong></td>
 <td>Un script qui contrôle le serveur, installe Docker si besoin, génère secrets et certificats, démarre la plateforme</td>
-<td><code>https://abdemadjid.github.io/controlix/install.sh</code></td>
+<td><code>https://controlix-ten.vercel.app/install.sh</code></td>
 </tr>
 <tr>
 <td><strong>Images Docker</strong></td>
@@ -640,7 +640,7 @@ aside.callout strong:first-child{color:hsl(var(--c))}
 <h2 id="distribution--registre-prive">Registre privé</h2>
 <p>Si l'éditeur vous fournit un accès privé aux images, ajoutez votre identifiant et exportez le jeton :</p>
 <pre><code class="language-bash">export CONTROLIX_REGISTRY_TOKEN='&lt;jeton fourni&gt;'
-curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo -E sh -s -- install --host 203.0.113.10 --registry-user mon-compte
+curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo -E sh -s -- install --host 203.0.113.10 --registry-user mon-compte
 </code></pre>
 <aside class="callout c-note">
 <p><strong>Note</strong> Le serveur doit pouvoir joindre Internet pendant l'installation et les mises à jour (le serveur de téléchargement de la commande d'installation, le registre d'images, Docker Hub). Une installation hors ligne n'est pas prise en charge dans cette version.</p>
@@ -718,7 +718,7 @@ curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo -E sh -s -- 
 </table>
 <p>Préférez un <strong>nom DNS</strong> si l'adresse IP peut changer.</p>
 <h2 id="installation-serveur--la-commande">La commande</h2>
-<pre><code class="language-bash">curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo sh -s -- install --host 203.0.113.10
+<pre><code class="language-bash">curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo sh -s -- install --host 203.0.113.10
 </code></pre>
 <p>Si vous omettez <code>--host</code>, l'installeur vous <strong>demande</strong> l'adresse et propose celle qu'il a détectée. Sans terminal (script automatisé), il refuse de continuer : il ne devine jamais l'adresse à votre place.</p>
 <h3 id="installation-serveur--options">Options</h3>
@@ -902,7 +902,7 @@ sudo /opt/controlix/install.sh uninstall --purge   # supprime aussi les données
 <h2 id="simulation--activer-la-simulation">Activer la simulation</h2>
 <p>La simulation est <strong>désactivée par défaut</strong>. Deux façons de l'activer :</p>
 <pre><code class="language-bash"># à l'installation
-curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo sh -s -- install --host 203.0.113.10 --demo
+curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo sh -s -- install --host 203.0.113.10 --demo
 
 # ou plus tard
 sudo sed -i 's/^DEMO_MODE_ENABLED=.*/DEMO_MODE_ENABLED=true/' /opt/controlix/.env
@@ -1331,7 +1331,7 @@ curl -s --cacert data/tls/ca.pem -X PUT $SERVER/api/v1/agents/config \
 </ol>
 <p>En cas d'échec, il garde l'ancienne version. Sous Windows, l'ancien exécutable est renommé en <code>.old</code> puis supprimé au démarrage suivant.</p>
 <p>Les nouveaux agents arrivent avec chaque version de Controlix, déjà compilés pour Linux (amd64, arm64) et Windows (amd64). Pour les publier sur votre serveur :</p>
-<pre><code class="language-bash">curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo sh -s -- update
+<pre><code class="language-bash">curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo sh -s -- update
 </code></pre>
 <p>Puis, dans <strong>Agents</strong>, le bouton <strong>Update</strong> (un poste ou tous).</p>
 <p>Le protocole est rétro-compatible au sein d'une version majeure (<code>/agent/v1</code>).</p>
@@ -3304,7 +3304,7 @@ sudo ./install.sh backup
 </code></pre>
 <p>Restaure base, configuration et certificats.</p>
 <h2 id="sauvegarde-mise-a-jour--mettre-a-jour-le-serveur">Mettre à jour le serveur</h2>
-<pre><code class="language-bash">curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo sh -s -- update
+<pre><code class="language-bash">curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo sh -s -- update
 </code></pre>
 <p>La commande :</p>
 <ol>
@@ -4238,7 +4238,7 @@ La console est en anglais. Ce site et sa documentation sont disponibles en fran�
     <p class="sub">Controlix is installed <strong>only</strong> with this installer: no repository to clone, nothing to compile. It checks the machine, installs Docker if needed, downloads the images, generates the secrets and the certificate, then asks for the administrator's user name, e-mail and password.</p>
     <div class="install">
       <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>Linux server · root</span></div>
-<pre><code>curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo sh -s -- install --host 203.0.113.10</code></pre></div>
+<pre><code>curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo sh -s -- install --host 203.0.113.10</code></pre></div>
       <div class="callout-home" role="note"><strong>Replace <code>203.0.113.10</code> with the address of YOUR server</strong>, its IP or DNS name, as your browsers and agents will reach it. The HTTPS certificate is issued for that exact address; with another one, the connection is refused. Server in the cloud: give its <em>public</em> IP.</div>
       <div class="steps">
         <div><h4>Run the command</h4><p>On a Linux server, with that server's address.</p></div>
@@ -4451,7 +4451,7 @@ La console est en anglais. Ce site et sa documentation sont disponibles en fran�
 <tr>
 <td><strong>Installer</strong></td>
 <td>A script that checks the server, installs Docker if needed, generates secrets and certificates, and starts the platform</td>
-<td><code>https://abdemadjid.github.io/controlix/install.sh</code></td>
+<td><code>https://controlix-ten.vercel.app/install.sh</code></td>
 </tr>
 <tr>
 <td><strong>Docker images</strong></td>
@@ -4489,7 +4489,7 @@ La console est en anglais. Ce site et sa documentation sont disponibles en fran�
 <h2 id="distribution--private-registry">Private registry</h2>
 <p>If the vendor gives you private access to the images, add your username and export the token:</p>
 <pre><code class="language-bash">export CONTROLIX_REGISTRY_TOKEN='&lt;token provided&gt;'
-curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo -E sh -s -- install --host 203.0.113.10 --registry-user mon-compte
+curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo -E sh -s -- install --host 203.0.113.10 --registry-user mon-compte
 </code></pre>
 <aside class="callout c-note">
 <p><strong>Note</strong> The server must be able to reach the Internet during installation and updates (the download server of the install command, the image registry, Docker Hub). An offline installation is not supported in this version.</p>
@@ -4567,7 +4567,7 @@ curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo -E sh -s -- 
 </table>
 <p>Prefer a <strong>DNS name</strong> if the IP address may change.</p>
 <h2 id="installation-serveur--the-command">The command</h2>
-<pre><code class="language-bash">curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo sh -s -- install --host 203.0.113.10
+<pre><code class="language-bash">curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo sh -s -- install --host 203.0.113.10
 </code></pre>
 <p>If you omit <code>--host</code>, the installer <strong>asks</strong> for the address and suggests the one it detected. Without a terminal (automated script), it refuses to continue: it never guesses the address for you.</p>
 <h3 id="installation-serveur--options">Options</h3>
@@ -4751,7 +4751,7 @@ sudo /opt/controlix/install.sh uninstall --purge   # also deletes the data (back
 <h2 id="simulation--enable-the-simulation">Enable the simulation</h2>
 <p>The simulation is <strong>disabled by default</strong>. There are two ways to enable it:</p>
 <pre><code class="language-bash"># at installation
-curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo sh -s -- install --host 203.0.113.10 --demo
+curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo sh -s -- install --host 203.0.113.10 --demo
 
 # or later
 sudo sed -i 's/^DEMO_MODE_ENABLED=.*/DEMO_MODE_ENABLED=true/' /opt/controlix/.env
@@ -5180,7 +5180,7 @@ curl -s --cacert data/tls/ca.pem -X PUT $SERVER/api/v1/agents/config \
 </ol>
 <p>If anything fails, it keeps the old version. On Windows, the old executable is renamed to <code>.old</code> and deleted at the next startup.</p>
 <p>New agents arrive with each Controlix version, already built for Linux (amd64, arm64) and Windows (amd64). To publish them on your server:</p>
-<pre><code class="language-bash">curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo sh -s -- update
+<pre><code class="language-bash">curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo sh -s -- update
 </code></pre>
 <p>Then, in <strong>Agents</strong>, use the <strong>Update</strong> button (one machine or all).</p>
 <p>The protocol is backward compatible within a major version (<code>/agent/v1</code>).</p>
@@ -7153,7 +7153,7 @@ sudo ./install.sh backup
 </code></pre>
 <p>Restores the database, configuration and certificates.</p>
 <h2 id="sauvegarde-mise-a-jour--update-the-server">Update the server</h2>
-<pre><code class="language-bash">curl -fsSL https://abdemadjid.github.io/controlix/install.sh | sudo sh -s -- update
+<pre><code class="language-bash">curl -fsSL https://controlix-ten.vercel.app/install.sh | sudo sh -s -- update
 </code></pre>
 <p>The command:</p>
 <ol>
